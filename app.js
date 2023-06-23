@@ -2,7 +2,9 @@ const express = require('express');
 const axios = require('axios');
 const path = require("path");
 const app = express()
-
+// view engine setup
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 // #############################################################################
 // Logs all request paths and method
 app.use(function (req, res, next) {
