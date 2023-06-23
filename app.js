@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const axios = require('axios');
 const path = require("path");
 const app = express()
 
@@ -24,6 +25,15 @@ var options = {
 }
 app.use(express.static('public', options))
 
+app.get('/', (req, res) => {
+    try {
+    const response = await axios.get('https://api.sheety.co/2ced0fac717ca592890c6bcdaaa1e3ec/fortuneGpt/%E7%BE%8E%E4%B8%BD%E8%B4%A2%E5%AF%8C%E4%BF%9D%E9%99%A9%E4%B8%89%E5%8D%81%E9%97%AE');
+    res.render('table', { data: response.data });
+    //res.json(response.data);
+  } catch (error) {
+    res.json({error: error.message});
+  }
+});
 // #############################################################################
 // Catch all handler for all other request.
 app.use('*', (req,res) => {
