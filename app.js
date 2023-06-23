@@ -30,6 +30,7 @@ app.use(function (req, res, next) {
 app.get('/', async (req, res) => {
     try {
     const response = await axios.get('https://api.sheety.co/2ced0fac717ca592890c6bcdaaa1e3ec/fortuneGpt/%E7%BE%8E%E4%B8%BD%E8%B4%A2%E5%AF%8C%E4%BF%9D%E9%99%A9%E4%B8%89%E5%8D%81%E9%97%AE');
+      console.log(response.data);
     res.render('index', { data: response.data });
     //res.json(response.data);
   } catch (error) {
